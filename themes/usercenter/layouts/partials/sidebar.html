@@ -32,9 +32,18 @@
         </div>
     </nav>
     <script type="text/javascript">
+        // 保持语言切换时的查询参数 (如 redirect)
+        document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(link => {
+            if (window.location.search) {
+                const url = new URL(link.href);
+                url.search = window.location.search;
+                link.href = url.toString();
+            }
+        });
+
         document.getElementById('btn-logout').addEventListener('click', async () => {
             await client.auth.signOut();
-            window.location.href = '/login/?redirect=' + encodeURIComponent(window.location.pathname);
+            window.location.href = '{{ "/login/" | relLangURL }}?redirect=' + encodeURIComponent(window.location.pathname);
         });
     </script>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>

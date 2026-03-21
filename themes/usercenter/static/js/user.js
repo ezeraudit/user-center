@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('user-id').textContent = user.id;
 
     // 格式化日期
+    const lang = document.documentElement.lang || 'zh-CN';
     const regDate = new Date(user.created_at);
-    document.getElementById('user-reg-date').textContent = regDate.toLocaleDateString('zh-CN', {
+    document.getElementById('user-reg-date').textContent = regDate.toLocaleDateString(lang, {
         year: 'numeric', month: 'long', day: 'numeric'
     });
 

@@ -67,6 +67,12 @@ other = "Bind to log in with a third-party account. Note: The social platform mu
 [bind_btn]
 other = "Bind"
 
+[bind]
+other = "Bind"
+
+[linked]
+other = "Linked"
+
 [security_settings]
 other = "Security Settings"
 
@@ -96,6 +102,9 @@ other = "New Email Address"
 
 [messages]
 other = "Messages"
+
+[send_verify_email]
+other = "Send Verification Email"
 
 [start_new_chat]
 other = "Start New Chat"

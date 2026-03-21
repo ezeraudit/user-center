@@ -100,6 +100,19 @@
     </main>
 
     <script src="{{ absURL "js/common.js"}}"></script>
+    <script type="text/javascript">
+        window.userI18n = {
+            bind: '{{ T "bind" | default "绑定" }}',
+            linked: '{{ T "linked" | default "已绑定" }}',
+            verifying_password: '{{ T "verifying_password" | default "正在验证原密码..." }}',
+            password_error: '{{ T "password_error" | default "原密码错误，请重试" }}',
+            password_too_short: '{{ T "password_too_short" | default "新密码需大于8位" }}',
+            password_mismatch: '{{ T "password_mismatch" | default "两次新密码输入不一致" }}',
+            password_updated_success: '{{ T "password_updated_success" | default "密码修改成功！" }}',
+            new_email_same: '{{ T "new_email_same" | default "新邮箱不能与当前邮箱相同" }}',
+            verification_email_sent: '{{ T "verification_email_sent" | default "验证邮件已发送至新邮箱，请查收确认" }}'
+        };
+    </script>
     <script src="{{ absURL "js/user.js"}}"></script>
 </body>
 </html>

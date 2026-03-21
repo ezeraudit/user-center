@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const isLinked = providers.includes(provider);
 
             if (isLinked) {
-                btn.textContent = '已绑定';
+                btn.textContent = window.userI18n ? window.userI18n.linked : '已绑定';
                 btn.classList.add('linked');
                 btn.disabled = true;
             } else {
-                btn.textContent = '绑定';
+                btn.textContent = window.userI18n ? window.userI18n.bind : '绑定';
                 btn.classList.remove('linked');
                 btn.disabled = false;
 
@@ -80,13 +80,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const newPwd = document.getElementById('new-pwd').value;
         const repeatPwd = document.getElementById('new-pwd-repeat').value;
 
-        if (newPwd.length < 8) return Notifications.show('新密码需大于8位', 'warning');
-        if (newPwd !== repeatPwd) return Notifications.show('两次新密码输入不一致', 'warning');
+        if (newPwd.length < 8) return Notifications.show(window.userI18n ? window.userI18n.password_too_short : '新密码需大于8位', 'warning');
+        if (newPwd !== repeatPwd) return Notifications.show(window.userI18n ? window.userI18n.password_mismatch : '两次新密码输入不一致', 'warning');
 
         // 为了安全性，建议先验证旧密码
         // 注意：Supabase 没有直接的 "Verify Password" API，
         // 我们通过尝试用旧密码 SignIn 来模拟验证。
-        Notifications.show('正在验证原密码...', 'info');
+        Notifications.show(window.userI18n ? window.userI18n.verifying_password : '正在验证原密码...', 'info');
 
         const { error: verifyError } = await client.auth.signInWithPassword({
             email: user.email,
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         if (verifyError) {
-            return Notifications.show('原密码错误，请重试', 'error');
+            return Notifications.show(window.userI18n ? window.userI18n.password_error : '原密码错误，请重试', 'error');
         }
 
         // 验证通过，更新密码
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (updateError) {
             Notifications.show(updateError.message, 'error');
         } else {
-            Notifications.show('密码修改成功！', 'success');
+            Notifications.show(window.userI18n ? window.userI18n.password_updated_success : '密码修改成功！', 'success');
             pwdForm.reset();
         }
     });
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.preventDefault();
         const newEmail = document.getElementById('new-email').value.trim();
 
-        if (newEmail === user.email) return Notifications.show('新邮箱不能与当前邮箱相同', 'warning');
+        if (newEmail === user.email) return Notifications.show(window.userI18n ? window.userI18n.new_email_same : '新邮箱不能与当前邮箱相同', 'warning');
 
         // 发送修改请求
         const { error } = await client.auth.updateUser({ email: newEmail });
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (error) {
             Notifications.show(error.message, 'error');
         } else {
-            Notifications.show('验证邮件已发送至新邮箱，请查收确认', 'success');
+            Notifications.show(window.userI18n ? window.userI18n.verification_email_sent : '验证邮件已发送至新邮箱，请查收确认', 'success');
             emailForm.reset();
         }
     });

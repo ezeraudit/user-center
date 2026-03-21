@@ -1,0 +1,245 @@
+[account_settings]
+other = "Account Settings"
+
+[private_message]
+other = "Messages"
+
+[logout]
+other = "Logout"
+
+[menu]
+other = "Menu"
+
+[login_or_register]
+other = "Login / Register"
+
+[terms_of_service]
+other = "Terms of Service"
+
+[privacy_policy]
+other = "Privacy Policy"
+
+[welcome_back]
+other = "Welcome Back"
+
+[no_account_register]
+other = "No account? Click to register"
+
+[personal_info]
+other = "Personal Information"
+
+[reg_email]
+other = "Registered Email"
+
+[loading]
+other = "Loading..."
+
+[reg_date]
+other = "Registration Date"
+
+[user_id]
+other = "User ID"
+
+[account_bind]
+other = "Account Binding"
+
+[bind_notice]
+other = "Bind to log in with a third-party account. Note: The social platform must match your account email to complete the binding."
+
+[bind_btn]
+other = "Bind"
+
+[security_settings]
+other = "Security Settings"
+
+[change_password]
+other = "Change Password"
+
+[old_password]
+other = "Current Password (for verification)"
+
+[new_password]
+other = "New Password"
+
+[repeat_password]
+other = "Repeat New Password"
+
+[update_password]
+other = "Update Password"
+
+[change_email]
+other = "Change Email"
+
+[email_notice]
+other = "Note: Changing your email requires you to click the verification links sent to both your old and new email addresses to confirm."
+
+[new_email_addr]
+other = "New Email Address"
+
+[messages]
+other = "Messages"
+
+[start_new_chat]
+other = "Start New Chat"
+
+[enter_email]
+other = "Enter recipient's email..."
+
+[confirm]
+other = "Confirm"
+
+[select_contact]
+other = "Select a contact to start chatting"
+
+[user_name]
+other = "User Name"
+
+[enter_message]
+other = "Type a message..."
+
+[redirecting_title]
+other = "Redirecting..."
+
+[redirecting_msg]
+other = "Redirecting, please wait..."
+
+[login_title]
+other = "Login"
+
+[use_ezer_account]
+other = "Use your Ezer account"
+
+[email_label]
+other = "Email"
+
+[create_account_btn]
+other = "Create Account"
+
+[next_btn]
+other = "Next"
+
+[social_login_divider]
+other = "Or log in via third-party"
+
+[google_login_title]
+other = "Log in with Google"
+
+[github_login_title]
+other = "Log in with GitHub"
+
+[input_password_label]
+other = "Enter Password"
+
+[forgot_password_btn]
+other = "Forgot password?"
+
+[back_btn]
+other = "Back"
+
+[send_otp_btn]
+other = "Send OTP Login"
+
+[login_btn]
+other = "Login"
+
+[set_password_label]
+other = "Set Password"
+
+[confirm_password_label]
+other = "Confirm Password"
+
+[password_hint]
+other = "*Password must be at least 8 characters long, and include uppercase, lowercase, and special characters."
+
+[already_have_account_btn]
+other = "Already have an account? Log in"
+
+[register_btn]
+other = "Register"
+
+[back_to_login_btn]
+other = "Back to login"
+
+[send_reset_link_btn]
+other = "Send reset link"
+
+[new_password_label]
+other = "New Password"
+
+[confirm_new_password_label]
+other = "Confirm New Password"
+
+[save_password_btn]
+other = "Save Password"
+
+[welcome_back_title]
+other = "Welcome Back"
+
+[enter_password_subtitle]
+other = "Please enter your password to continue"
+
+[create_account_title]
+other = "Create Account"
+
+[register_ezer_subtitle]
+other = "Register a new Ezer account"
+
+[reset_password_title]
+other = "Reset Password"
+
+[find_account_subtitle]
+other = "Find account via email"
+
+[enter_new_password_subtitle]
+other = "Please enter a new secure password"
+
+[please_enter_email]
+other = "Please enter your email"
+
+[invalid_email_format]
+other = "Invalid email format"
+
+[login_success]
+other = "Login successful"
+
+[please_enter_password]
+other = "Please enter your password"
+
+[login_failed]
+other = "Login failed"
+
+[otp_sent]
+other = "Login link has been sent to your email"
+
+[password_too_short]
+other = "Password must be at least 8 characters"
+
+[password_mismatch]
+other = "Passwords do not match"
+
+[registration_success]
+other = "Registration successful! Please check your verification email"
+
+[reset_email_sent]
+other = "Reset email sent, please check"
+
+[updating_password]
+other = "Updating password..."
+
+[password_updated_success]
+other = "Password updated successfully! Redirecting..."
+
+[password_update_failed]
+other = "Update failed: "
+
+[captcha_load_failed]
+other = "Failed to load captcha component"
+
+[captcha_failed]
+other = "Captcha failed"
+
+[verification_success_set_pwd]
+other = "Verification successful, please set a new password"
+
+[recovery_interception_msg]
+other = "Please set your new password"

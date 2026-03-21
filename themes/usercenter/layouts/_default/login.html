@@ -1,0 +1,190 @@
+{{ partial "header.html" . }}
+
+<body>
+    <div class="bg-layer"></div>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <button id="menu-btn" class="icon-btn nav-icon-btn mobile-only">
+                <span class="material-icons-round">menu</span>
+            </button>
+            <p class="brand-logo">Ezer</p>
+        </div>
+
+        <div class="nav-right desktop-only">
+            <a href="{{ "/terms-of-service/" | relLangURL }}" class="nav-link">{{ T "terms_of_service" | default "服务协议" }}</a>
+            <a href="{{ "/privacy-policy/" | relLangURL }}" class="nav-link">{{ T "privacy_policy" | default "隐私政策" }}</a>
+        </div>
+
+        <div class="nav-right">
+            <button id="theme-toggle" class="icon-btn nav-icon-btn">
+                <span class="material-icons-round">dark_mode</span>
+            </button>
+            {{ $zhURL := replace .RelPermalink "/en" "" | default "/" }}
+            {{ $enURL := "" }}
+            {{ if eq $zhURL "/" }}
+                {{ $enURL = "/en/" }}
+            {{ else }}
+                {{ $enURL = printf "/en%s" $zhURL }}
+            {{ end }}
+            <div class="nav-dropdown" onclick="this.classList.toggle('active')">
+                <button class="icon-btn nav-icon-btn dropdown-toggle">
+                    <span class="material-icons-round">language</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="{{ $zhURL }}" class="dropdown-item {{ if eq .Site.Language.Lang "zh" }}active{{ end }}">简体中文</a>
+                    <a href="{{ $enURL }}" class="dropdown-item {{ if eq .Site.Language.Lang "en" }}active{{ end }}">English</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="brand-logo">Ezer</span>
+            <button id="close-sidebar" class="icon-btn">
+                <span class="material-icons-round">close</span>
+            </button>
+        </div>
+        <div class="sidebar-menu">
+            <a href="{{ "/terms-of-service/" | relLangURL }}" class="sidebar-item">{{ T "terms_of_service" | default "服务协议" }}</a>
+            <a href="{{ "/privacy-policy/" | relLangURL }}" class="sidebar-item">{{ T "privacy_policy" | default "隐私政策" }}</a>
+        </div>
+    </aside>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2 id="auth-title">{{ T "login_title" }}</h2>
+                <p id="auth-subtitle">{{ T "use_ezer_account" }}</p>
+            </div>
+
+            <div id="step-email" class="auth-step active">
+                <div class="input-group">
+                    <input type="email" id="input-email" required placeholder=" ">
+                    <label for="input-email">{{ T "email_label" }}</label>
+                </div>
+                <div class="actions-right">
+                    <button class="btn-text" id="btn-to-register">{{ T "create_account_btn" }}</button>
+                    <button class="btn-primary" id="btn-next">{{ T "next_btn" }}</button>
+                </div>
+
+                <div class="divider"><span>{{ T "social_login_divider" }}</span></div>
+
+                <div class="social-login">
+                    <button class="social-btn" data-provider="google" title="{{ T "google_login_title" }}">
+                        <i class="fa-brands fa-google"></i>
+                    </button>
+                    <button class="social-btn" data-provider="github" title="{{ T "github_login_title" }}">
+                        <i class="fa-brands fa-github"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="step-password" class="auth-step">
+                <div class="user-chip" id="user-chip">
+                    <span class="material-icons-round">account_circle</span>
+                    <span id="display-email"></span>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="input-password" required placeholder=" ">
+                    <label for="input-password">{{ T "input_password_label" }}</label>
+                </div>
+                <div class="actions-left-right">
+                    <button class="btn-text" id="btn-forgot-pwd">{{ T "forgot_password_btn" }}</button>
+                </div>
+                <div class="actions-right mt-4">
+                    <button class="btn-text" id="btn-back-email">{{ T "back_btn" }}</button>
+                    <button class="btn-outlined" id="btn-otp-login">{{ T "send_otp_btn" }}</button>
+                    <button class="btn-primary" id="btn-login">{{ T "login_btn" }}</button>
+                </div>
+            </div>
+
+            <div id="step-register" class="auth-step">
+                <div class="input-group">
+                    <input type="email" id="reg-email" required placeholder=" ">
+                    <label for="reg-email">{{ T "email_label" }}</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="reg-password" required placeholder=" ">
+                    <label for="reg-password">{{ T "set_password_label" }}</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="reg-password-repeat" required placeholder=" ">
+                    <label for="reg-password-repeat">{{ T "confirm_password_label" }}</label>
+                </div>
+                <div style="margin-top: 0; margin-bottom: 20px; font-size: 12px;">{{ T "password_hint" }}</div>
+                <div class="actions-right mt-4">
+                    <button class="btn-text" id="btn-back-login">{{ T "already_have_account_btn" }}</button>
+                    <button class="btn-primary" id="btn-register">{{ T "register_btn" }}</button>
+                </div>
+            </div>
+
+            <div id="step-forgot" class="auth-step">
+                <div class="input-group">
+                    <input type="email" id="forgot-email" required placeholder=" ">
+                    <label for="forgot-email">{{ T "email_label" }}</label>
+                </div>
+
+                <div class="actions-right mt-4">
+                    <button class="btn-text" id="btn-cancel-forgot">{{ T "back_to_login_btn" }}</button>
+                    <button class="btn-primary" id="btn-send-reset-link">{{ T "send_reset_link_btn" }}</button>
+                </div>
+            </div>
+
+            <div id="step-update-password" class="auth-step">
+                <div class="input-group">
+                    <input type="password" id="new-password" required placeholder=" ">
+                    <label for="new-password">{{ T "new_password_label" }}</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="new-password-confirm" required placeholder=" ">
+                    <label for="new-password-confirm">{{ T "confirm_new_password_label" }}</label>
+                </div>
+                <div style="margin-top: 0; margin-bottom: 20px; font-size: 12px;">{{ T "password_hint" }}</div>
+                <div class="actions-right mt-4">
+                    <button class="btn-primary" id="btn-save-new-password">{{ T "save_password_btn" }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.i18n = {
+            title_email: '{{ T "login_title" }}',
+            subtitle_email: '{{ T "use_ezer_account" }}',
+            title_password: '{{ T "welcome_back_title" }}',
+            subtitle_password: '{{ T "enter_password_subtitle" }}',
+            title_register: '{{ T "create_account_title" }}',
+            subtitle_register: '{{ T "register_ezer_subtitle" }}',
+            title_forgot: '{{ T "reset_password_title" }}',
+            subtitle_forgot: '{{ T "find_account_subtitle" }}',
+            title_update: '{{ T "reset_password_title" }}',
+            subtitle_update: '{{ T "enter_new_password_subtitle" }}',
+            please_enter_email: '{{ T "please_enter_email" }}',
+            invalid_email_format: '{{ T "invalid_email_format" }}',
+            login_success: '{{ T "login_success" }}',
+            please_enter_password: '{{ T "please_enter_password" }}',
+            login_failed: '{{ T "login_failed" }}',
+            otp_sent: '{{ T "otp_sent" }}',
+            password_too_short: '{{ T "password_too_short" }}',
+            password_mismatch: '{{ T "password_mismatch" }}',
+            registration_success: '{{ T "registration_success" }}',
+            reset_email_sent: '{{ T "reset_email_sent" }}',
+            updating_password: '{{ T "updating_password" }}',
+            password_updated_success: '{{ T "password_updated_success" }}',
+            password_update_failed: '{{ T "password_update_failed" }}',
+            captcha_load_failed: '{{ T "captcha_load_failed" }}',
+            captcha_failed: '{{ T "captcha_failed" }}',
+            verification_success_set_pwd: '{{ T "verification_success_set_pwd" }}',
+            recovery_interception_msg: '{{ T "recovery_interception_msg" }}',
+            recovery_lock_log: '{{ T "recovery_lock_log" }}',
+            intercept_redirect_log: '{{ T "intercept_redirect_log" }}'
+        };
+    </script>
+    <script src="{{ absURL "js/common.js"}}"></script>
+    <script src="{{ absURL "js/login.js"}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+baseURL               = "https://account.ezer.cc/"
+languageCode          = "zh-CN"
+defaultContentLanguage = "zh"
+title                 = "Ezer账号"
+theme                 = "usercenter"
+preserveTaxonomyNames = true
+disablePathToLower    = true
+hasCJKLanguage        = true
+publishDir            = "public"
+
+[languages]
+  [languages.zh]
+    languageName = "中文"
+    languageCode = "zh-CN"
+    weight = 1
+  [languages.en]
+    languageName = "English"
+    languageCode = "en-US"
+    weight = 2
+
+[outputs]
+home = ["HTML", "JSON"]
+
+[params]
+    author        = "Ezer"
+    description   = "Ezer账号。用户可以登陆账号并在此处修改账号信息，绑定第三方账号登录方式，向其他用户发送站内私信。"
+
+[params.images]
+    favicon       = "/favicon.png"
+
+[markup.goldmark.renderer]
+    unsafe = true

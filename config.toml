@@ -13,10 +13,12 @@ publishDir            = "public"
     languageName = "中文"
     languageCode = "zh-CN"
     weight = 1
+    title = "Ezer账号"
   [languages.en]
     languageName = "English"
     languageCode = "en-US"
     weight = 2
+    title = "Ezer Account"
 
 [outputs]
 home = ["HTML", "JSON"]

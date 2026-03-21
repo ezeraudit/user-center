@@ -4,7 +4,7 @@
             <button id="menu-btn" class="icon-btn nav-icon-btn mobile-only">
                 <span class="material-icons-round">menu</span>
             </button>
-            <a href="{{ "/" | relLangURL }}" class="brand-logo">Ezer账号</a>
+            <a href="{{ "/" | relLangURL }}" class="brand-logo">{{ T "brand_name" | default "Ezer账号" }}</a>
         </div>
         <div class="nav-right">
             <button id="theme-toggle" class="icon-btn nav-icon-btn">
@@ -52,12 +52,6 @@
                 <a href="{{ "/message/" | relLangURL }}" class="sidebar-item active" id="nav-message-link">
                     <span class="material-icons-round">mail</span>{{ T "private_message" | default "私信消息" }}
                     <span class="sidebar-badge" id="sidebar-unread-dot"></span>
-                </a>
-                <a href="{{ "/terms-of-service/" | relLangURL }}" class="sidebar-item" id="nav-terms-link">
-                    <span class="material-icons-round">gavel</span>{{ T "terms_of_service" | default "服务协议" }}
-                </a>
-                <a href="{{ "/privacy-policy/" | relLangURL }}" class="sidebar-item" id="nav-privacy-link">
-                    <span class="material-icons-round">policy</span>{{ T "privacy_policy" | default "隐私政策" }}
                 </a>
             </div>
         </aside>

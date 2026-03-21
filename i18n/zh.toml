@@ -1,8 +1,26 @@
 [account_settings]
 other = "账号设置"
 
+[brand_name]
+other = "Ezer账号"
+
 [private_message]
 other = "私信消息"
+
+[system_notifications]
+other = "站内通知"
+
+[no_system_messages]
+other = "暂无系统通知"
+
+[no_messages_yet]
+other = "暂无消息，打个招呼吧！"
+
+[load_notifications_failed]
+other = "加载通知失败"
+
+[load_messages_failed]
+other = "消息加载失败"
 
 [logout]
 other = "退出登录"

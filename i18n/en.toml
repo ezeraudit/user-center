@@ -1,8 +1,26 @@
 [account_settings]
 other = "Account Settings"
 
+[brand_name]
+other = "Ezer Account"
+
 [private_message]
 other = "Messages"
+
+[system_notifications]
+other = "System Notifications"
+
+[no_system_messages]
+other = "No system notifications"
+
+[no_messages_yet]
+other = "No messages yet, say hi!"
+
+[load_notifications_failed]
+other = "Failed to load notifications"
+
+[load_messages_failed]
+other = "Failed to load messages"
 
 [logout]
 other = "Logout"

@@ -53,6 +53,15 @@
     </main>
 
     <script src="{{ absURL "js/common.js"}}"></script>
+    <script type="text/javascript">
+        window.messageI18n = {
+            system_notifications: '{{ T "system_notifications" | default "站内通知" }}',
+            no_system_messages: '{{ T "no_system_messages" | default "暂无系统通知" }}',
+            no_messages_yet: '{{ T "no_messages_yet" | default "暂无消息，打个招呼吧！" }}',
+            load_notifications_failed: '{{ T "load_notifications_failed" | default "加载通知失败" }}',
+            load_messages_failed: '{{ T "load_messages_failed" | default "消息加载失败" }}'
+        };
+    </script>
     <script src="{{ absURL "js/message.js"}}"></script>
 </body>
 </html>

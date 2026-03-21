@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const SYSTEM_BOT = {
         id: 'system_notification_bot',
-        email: '站内通知',
+        email: window.messageI18n ? window.messageI18n.system_notifications : '站内通知',
         isSystem: true
     };
 
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             contactsMap.clear();
 
             // --- 1. 渲染【站内通知】 ---
-            renderContactItem(SYSTEM_BOT, lastSysMsg ? lastSysMsg.title || lastSysMsg.content : '暂无系统通知');
+            renderContactItem(SYSTEM_BOT, lastSysMsg ? lastSysMsg.title || lastSysMsg.content : (window.messageI18n ? window.messageI18n.no_system_messages : '暂无系统通知'));
 
             // --- 2. 渲染【私信联系人】 ---
             profiles.forEach(profile => {
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             } catch (err) {
                 console.error(err);
-                messagesArea.innerHTML = '<p style="text-align:center">加载通知失败</p>';
+                messagesArea.innerHTML = `<p style="text-align:center">${window.messageI18n ? window.messageI18n.load_notifications_failed : '加载通知失败'}</p>`;
             }
         }
         // ----------------------------------------------------
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             } catch (err) {
                 console.error(err);
-                messagesArea.innerHTML = '<p style="text-align:center">消息加载失败</p>';
+                messagesArea.innerHTML = `<p style="text-align:center">${window.messageI18n ? window.messageI18n.load_messages_failed : '消息加载失败'}</p>`;
             }
         }
     }
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function renderSystemMessages(notifications) {
         messagesArea.innerHTML = '';
         if (!notifications || notifications.length === 0) {
-            messagesArea.innerHTML = '<p style="text-align:center;color:#ccc;margin-top:20px">暂无系统通知</p>';
+            messagesArea.innerHTML = `<p style="text-align:center;color:#ccc;margin-top:20px">${window.messageI18n ? window.messageI18n.no_system_messages : '暂无系统通知'}</p>`;
             return;
         }
 
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function renderPrivateMessages(messages) {
         messagesArea.innerHTML = '';
         if (!messages || messages.length === 0) {
-            messagesArea.innerHTML = '<p style="text-align:center;color:#ccc;margin-top:20px">暂无消息，打个招呼吧！</p>';
+            messagesArea.innerHTML = `<p style="text-align:center;color:#ccc;margin-top:20px">${window.messageI18n ? window.messageI18n.no_messages_yet : '暂无消息，打个招呼吧！'}</p>`;
             return;
         }
         messages.forEach(msg => appendMessageUI(msg));

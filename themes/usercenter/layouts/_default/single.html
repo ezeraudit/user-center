@@ -1,9 +1,10 @@
 {{ partial "header.html" . }}
 
-<body class="article-page">
+<body class="article-page">    
+    <div class="bg-layer"></div>
     <nav class="navbar">
         <div class="nav-left">
-            <a href="{{ "/" | relLangURL }}" class="icon-btn nav-icon-btn">
+            <a href="{{ "/login/" | relLangURL }}" class="icon-btn nav-icon-btn">
                 <span class="material-icons-round">arrow_back</span>
             </a>
             <p class="brand-logo">Ezer</p>
@@ -21,9 +22,9 @@
             {{ $zhURL := replace .RelPermalink "/en" "" | default "/" }}
             {{ $enURL := "" }}
             {{ if eq $zhURL "/" }}
-                {{ $enURL = "/en/" }}
+            {{ $enURL = "/en/" }}
             {{ else }}
-                {{ $enURL = printf "/en%s" $zhURL }}
+            {{ $enURL = printf "/en%s" $zhURL }}
             {{ end }}
             <div class="nav-dropdown" onclick="this.classList.toggle('active')">
                 <button class="icon-btn nav-icon-btn dropdown-toggle">
@@ -43,23 +44,35 @@
                 {{ .Content }}
             </div>
             <div class="article-footer">
-                <p>© {{ now.Format "2006" }} Ezer. All rights reserved.</p>
+                <p>© {{ now.Format "2006" }} Ezer Account. All rights reserved.</p>
             </div>
         </article>
     </main>
 
     <style>
+        .bg-layer {
+            position: fixed;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: url('/background.jpg') center/cover no-repeat;
+            filter: blur(2px);
+            z-index: -1;
+        }
         .article-page {
             background-color: var(--bg-color);
             color: var(--text-color);
             min-height: 100vh;
         }
+
         .article-container {
             padding-top: calc(var(--navbar-height) + 40px);
             padding-bottom: 60px;
             display: flex;
             justify-content: center;
         }
+
         .article-card {
             width: 100%;
             max-width: 800px;
@@ -72,11 +85,13 @@
             margin: 0 20px;
             border: 1px solid var(--border-color);
         }
+
         .article-content {
             line-height: 1.8;
             color: var(--text-color);
             font-size: 16px;
         }
+
         .article-content h1 {
             margin-bottom: 40px;
             font-size: 36px;
@@ -84,6 +99,7 @@
             color: var(--primary-color);
             letter-spacing: -0.5px;
         }
+
         .article-content h2 {
             margin-top: 40px;
             margin-bottom: 20px;
@@ -94,6 +110,7 @@
             align-items: center;
             gap: 12px;
         }
+
         .article-content h2::before {
             content: '';
             display: inline-block;
@@ -102,21 +119,25 @@
             background: var(--primary-color);
             border-radius: 2px;
         }
+
         .article-content p {
             margin-bottom: 20px;
             color: var(--text-secondary);
         }
+
         .article-content ul {
             margin-bottom: 24px;
             padding-left: 20px;
             list-style: none;
         }
+
         .article-content li {
             margin-bottom: 12px;
             position: relative;
             padding-left: 24px;
             color: var(--text-secondary);
         }
+
         .article-content li::before {
             content: '•';
             position: absolute;
@@ -124,6 +145,7 @@
             color: var(--primary-color);
             font-weight: bold;
         }
+
         .article-footer {
             margin-top: 60px;
             padding-top: 30px;
@@ -132,7 +154,7 @@
             color: var(--text-secondary);
             font-size: 14px;
         }
-        
+
         .nav-link.active {
             color: var(--primary-color);
             font-weight: 700;
@@ -147,6 +169,7 @@
                 border: none;
                 background: transparent;
             }
+
             .article-content h1 {
                 font-size: 28px;
             }
@@ -155,4 +178,5 @@
 
     <script src="{{ absURL "js/common.js"}}"></script>
 </body>
+
 </html>

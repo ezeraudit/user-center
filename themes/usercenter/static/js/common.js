@@ -289,9 +289,9 @@ function executeCaptcha() {
         requestAnimationFrame(() => overlay.classList.add('active'));
 
         if (!window.hcaptcha) {
-            const msg = (window.i18n && window.i18n.captcha_load_failed) || 
-                        (window.userI18n && window.userI18n.captcha_load_failed) || 
-                        '验证组件加载失败';
+            const msg = (window.i18n && window.i18n.captcha_load_failed) ||
+                (window.userI18n && window.userI18n.captcha_load_failed) ||
+                '验证组件加载失败';
             Notifications.show(msg, 'error');
             overlay.remove(); reject('Captcha fail'); return;
         }
@@ -305,9 +305,9 @@ function executeCaptcha() {
                     resolve(token);
                 },
                 'error-callback': () => {
-                    const msg = (window.i18n && window.i18n.captcha_failed) || 
-                                (window.userI18n && window.userI18n.captcha_failed) || 
-                                '验证失败';
+                    const msg = (window.i18n && window.i18n.captcha_failed) ||
+                        (window.userI18n && window.userI18n.captcha_failed) ||
+                        '验证失败';
                     Notifications.show(msg, 'error');
                     overlay.remove(); reject('Captcha error');
                 },

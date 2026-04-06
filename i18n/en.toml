@@ -59,16 +59,16 @@ other = "Registration Date"
 other = "User ID"
 
 [account_bind]
-other = "Account Binding"
+other = "Account Linking"
 
 [bind_notice]
-other = "Bind to log in with a third-party account. Note: The social platform must match your account email to complete the binding."
+other = "Link to log in with a third-party account. Note: The social platform must match your account email."
 
 [bind_btn]
-other = "Bind"
+other = "Link"
 
 [bind]
-other = "Bind"
+other = "Link"
 
 [linked]
 other = "Linked"

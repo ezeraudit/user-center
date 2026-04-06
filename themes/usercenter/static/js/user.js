@@ -83,45 +83,32 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (newPwd.length < 8) return Notifications.show(window.userI18n ? window.userI18n.password_too_short : '新密码需大于8位', 'warning');
         if (newPwd !== repeatPwd) return Notifications.show(window.userI18n ? window.userI18n.password_mismatch : '两次新密码输入不一致', 'warning');
 
-        // 为了安全性，建议先验证旧密码
-        // 注意：Supabase 没有直接的 "Verify Password" API，
-        // 我们通过尝试用旧密码 SignIn 来模拟验证。
-        Notifications.show(window.userI18n ? window.userI18n.verifying_password : '正在验证原密码...', 'info');
+        // 使用 Supabase 的内置“原密码验证”功能 (需在后台开启)
+        Notifications.show(window.userI18n ? window.userI18n.updating_password : '正在提交修改...', 'info');
 
         try {
-            const token = await executeCaptcha();
-            const { error: verifyError } = await client.auth.signInWithPassword({
-                email: user.email,
-                password: oldPwd,
-                options: { captchaToken: token }
+            const { error: updateError } = await client.auth.updateUser({ 
+                password: newPwd,
+                old_password: oldPwd 
             });
 
-            if (verifyError) {
-                console.error('Password verification failed:', verifyError);
-                let errMsg = window.userI18n ? window.userI18n.password_error : '原密码错误，请重试';
+            if (updateError) {
+                console.error('Password update failed:', updateError);
+                let errMsg = updateError.message;
 
-                // 如果是频率限制或其他明确错误，显示具体信息
-                if (verifyError.status === 429) {
-                    errMsg = '请求过于频繁，请稍后再试';
-                } else if (verifyError.message && verifyError.message !== 'Invalid login credentials') {
-                    errMsg = verifyError.message;
+                // 如果是原密码错误，显示更友好的提示 (大小写无关)
+                const errLower = updateError.message.toLowerCase();
+                if (errLower.includes('current password') || errLower.includes('invalid password')) {
+                    errMsg = window.userI18n ? window.userI18n.password_error : '原密码错误，请重新输入';
                 }
 
-                return Notifications.show(errMsg, 'error');
+                Notifications.show(errMsg, 'error');
+            } else {
+                Notifications.show(window.userI18n ? window.userI18n.password_updated_success : '密码修改成功！', 'success');
+                pwdForm.reset();
             }
-        } catch (captchaErr) {
-            if (captchaErr === 'Captcha closed') return;
-            return Notifications.show('验证码校验失败', 'error');
-        }
-
-        // 验证通过，更新密码
-        const { error: updateError } = await client.auth.updateUser({ password: newPwd });
-
-        if (updateError) {
-            Notifications.show(updateError.message, 'error');
-        } else {
-            Notifications.show(window.userI18n ? window.userI18n.password_updated_success : '密码修改成功！', 'success');
-            pwdForm.reset();
+        } catch (err) {
+            Notifications.show(err.message || '修改失败', 'error');
         }
     });
 

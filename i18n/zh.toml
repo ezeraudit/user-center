@@ -585,3 +585,37 @@ other = "您有 {amount} 提现正在等待处理，暂不能提交新的提现�
 
 [withdrawal_pending_limit_error]
 other = "您已有正在处理中的提现申请，需处理完毕后才能提交新的申请"
+
+[title_otp]
+other = "输入验证码"
+
+[subtitle_otp]
+other = "验证码已发送，请输入以继续"
+
+[otp_message_hint]
+other = "我们已向您的邮箱发送了 6 位验证码，请在下方输入："
+
+[otp_resend]
+other = "重新发送"
+
+[verify_and_login_btn]
+other = "验证并登录"
+
+[please_enter_6digit_otp]
+other = "请输入6位验证码"
+
+[otp_verifying]
+other = "验证中..."
+
+[otp_invalid_or_expired]
+other = "验证码错误或已失效"
+
+[local_mock_otp_sent]
+other = "[本地模拟] 验证码已发送至您的邮箱 (已自动模拟为 123456)"
+
+[local_mock_login_success]
+other = "[本地模拟] 登录成功！正在跳转..."
+
+[local_mock_otp_error]
+other = "[本地模拟] 验证码错误，请输入 123456"
+

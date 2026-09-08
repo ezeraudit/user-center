@@ -585,3 +585,37 @@ other = "You have a pending withdrawal of {amount} in progress. New requests are
 
 [withdrawal_pending_limit_error]
 other = "You already have a pending withdrawal request. Please wait for it to be processed."
+
+[title_otp]
+other = "Enter Verification Code"
+
+[subtitle_otp]
+other = "Verification code sent, please enter to continue"
+
+[otp_message_hint]
+other = "We sent a 6-digit verification code to your email, please enter below:"
+
+[otp_resend]
+other = "Resend"
+
+[verify_and_login_btn]
+other = "Verify & Login"
+
+[please_enter_6digit_otp]
+other = "Please enter 6-digit verification code"
+
+[otp_verifying]
+other = "Verifying..."
+
+[otp_invalid_or_expired]
+other = "Verification code is incorrect or expired"
+
+[local_mock_otp_sent]
+other = "[Local Mock] Verification code sent to your email (simulated as 123456)"
+
+[local_mock_login_success]
+other = "[Local Mock] Login successful! Redirecting..."
+
+[local_mock_otp_error]
+other = "[Local Mock] Verification code error, please enter 123456"
+

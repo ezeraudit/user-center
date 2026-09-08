@@ -111,6 +111,31 @@
                 </div>
             </div>
 
+            <div id="step-otp" class="auth-step">
+                <div class="user-chip" id="otp-user-chip">
+                    <span class="material-icons-round">account_circle</span>
+                    <span id="display-otp-email"></span>
+                </div>
+                <div class="otp-message" style="margin-bottom: 24px; font-size: 14px; color: var(--text-color); text-align: center;">
+                    {{ T "otp_message_hint" }}
+                </div>
+                <div class="otp-inputs-container">
+                    <input type="text" maxlength="1" class="otp-input" data-index="0" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+                    <input type="text" maxlength="1" class="otp-input" data-index="1" inputmode="numeric" pattern="[0-9]*">
+                    <input type="text" maxlength="1" class="otp-input" data-index="2" inputmode="numeric" pattern="[0-9]*">
+                    <input type="text" maxlength="1" class="otp-input" data-index="3" inputmode="numeric" pattern="[0-9]*">
+                    <input type="text" maxlength="1" class="otp-input" data-index="4" inputmode="numeric" pattern="[0-9]*">
+                    <input type="text" maxlength="1" class="otp-input" data-index="5" inputmode="numeric" pattern="[0-9]*">
+                </div>
+                <div class="otp-actions-row">
+                    <button class="btn-text" id="btn-otp-resend" disabled>{{ T "otp_resend" }} (60s)</button>
+                </div>
+                <div class="actions-right mt-4">
+                    <button class="btn-text" id="btn-back-otp">{{ T "back_btn" }}</button>
+                    <button class="btn-primary" id="btn-verify-otp">{{ T "verify_and_login_btn" }}</button>
+                </div>
+            </div>
+
             <div id="step-register" class="auth-step">
                 <div class="input-group">
                     <input type="email" id="reg-email" required placeholder=" ">
@@ -209,7 +234,17 @@
             recovery_interception_msg: '{{ T "recovery_interception_msg" }}',
             password_complexity_error: '{{ T "password_complexity_error" }}',
             recovery_lock_log: '{{ T "recovery_lock_log" }}',
-            intercept_redirect_log: '{{ T "intercept_redirect_log" }}'
+            intercept_redirect_log: '{{ T "intercept_redirect_log" }}',
+            title_otp: '{{ T "title_otp" }}',
+            subtitle_otp: '{{ T "subtitle_otp" }}',
+            otp_resend: '{{ T "otp_resend" }}',
+            verify_and_login_btn: '{{ T "verify_and_login_btn" }}',
+            please_enter_6digit_otp: '{{ T "please_enter_6digit_otp" }}',
+            otp_verifying: '{{ T "otp_verifying" }}',
+            otp_invalid_or_expired: '{{ T "otp_invalid_or_expired" }}',
+            local_mock_otp_sent: '{{ T "local_mock_otp_sent" }}',
+            local_mock_login_success: '{{ T "local_mock_login_success" }}',
+            local_mock_otp_error: '{{ T "local_mock_otp_error" }}'
         };
     </script>
     <script src="{{ "js/common.js" | relURL }}?v=5"></script>
